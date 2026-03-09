@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexus‑9D OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="nexus9-estilos.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#050810">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Nexus‑9D OS">
+</head>
+<body>
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
+
+<div class="os-shell">
+
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-dot"></div>
+      NEXUS‑9D OS
+    </div>
+    <div class="topbar-right">
+      <div class="status-pill"><div class="status-dot"></div> 9 CORDONES ACTIVOS</div>
+      <span id="clock" style="font-size:0.65rem; color: var(--text-dim);"></span>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <div class="sidebar-label">Núcleo · 9 Cordones</div>
+        <div class="nav-item active" onclick="setNav(this)"><span class="nav-icon">⌬</span> Portal Principal</div>
+        <div class="nav-item" onclick="setNav(this)"><span class="nav-icon">◈</span> Motor Cognitivo</div>
+        <div class="nav-item" onclick="setNav(this)"><span class="nav-icon">◎</span> Herramientas</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Módulos</div>
+        <div class="nav-item" onclick="setNav(this)"><span class="nav-icon">✦</span> Resumen</div>
+        <div class="nav-item" onclick="setNav(this)"><span class="nav-icon">✧</span> Escritura</div>
+        <div class="nav-item" onclick="setNav(this)"><span class="nav-icon">⬡</span> Estudio</div>
+        <div class="nav-item" onclick="setNav(this)"><span class="nav-icon">⊞</span> Productividad</div>
+      </div>
+      <div class="sidebar-section">
+        <div class="sidebar-label">Integraciones IA</div>
+        <div class="nav-item" onclick="setNav(this)"><span class="nav-icon">◉</span> Copilot</div>
+        <div class="nav-item" onclick="setNav(this)"><span class="nav-icon">◉</span> Claude</div>
+        <div class="nav-item" onclick="setNav(this)"><span class="nav-icon">◉</span> Gemini</div>
+      </div>
+    </div>
+
+    <div class="center">
+      <div class="hero">
+        <div class="hero-sub">// sistema operativo cognitivo dimensional · 9 cordones</div>
+        <div class="hero-title">¿Qué necesitas<br>hoy, Asdrúbal?</div>
+        <div class="hero-desc">Los 9 cordones de Nexus‑9D procesarán tu intención y generarán una respuesta adaptada a tu nivel cognitivo.</div>
+      </div>
+
+      <div class="command-area">
+        <div class="cmd-label">// ENTRADA DE INTENCIÓN — CORDÓN 1</div>
+        <div class="cmd-wrapper">
+          <div class="cmd-prompt">N9D &gt;</div>
+          <input class="cmd-input" id="cmdInput" type="text" placeholder="escribe cualquier cosa — el sistema lo procesa..." autocomplete="off">
+          <button class="cmd-btn" onclick="processCommand()">PROCESAR →</button>
+        </div>
+      </div>
+
+      <div class="response-area">
+        <div class="welcome-state" id="welcomeState">
+          <div class="welcome-icon">⌬</div>
+          <div class="welcome-text">Los 9 cordones están activos.<br>Escribe cualquier intención arriba.<br>Nexus‑9D la procesa en tiempo real.</div>
+          <div class="quick-chips">
+            <div class="quick-chip" onclick="fillCmd('quiero hacer mi CV')">hacer mi CV</div>
+            <div class="quick-chip" onclick="fillCmd('quiero aprender programación')">aprender programación</div>
+            <div class="quick-chip" onclick="fillCmd('necesito un traductor')">traductor</div>
+            <div class="quick-chip" onclick="fillCmd('quiero escribir una carta formal')">carta formal</div>
+            <div class="quick-chip" onclick="fillCmd('quiero estudiar historia')">estudiar historia</div>
+            <div class="quick-chip" onclick="fillCmd('quiero hacer un presupuesto')">presupuesto</div>
+          </div>
+        </div>
+
+        <div class="response-block" id="responseBlock">
+          <div class="response-header" id="responseHeader">RESPUESTA NEXUS‑9D</div>
+          <div class="tool-grid" id="toolGrid"></div>
+          <div class="level-tabs" id="levelTabs">
+            <div class="level-tab active" onclick="setLevel(this,'n1')">N1 Infantil</div>
+            <div class="level-tab" onclick="setLevel(this,'n2')">N2 Básico</div>
+            <div class="level-tab" onclick="setLevel(this,'n3')">N3 Técnico</div>
+            <div class="level-tab" onclick="setLevel(this,'n4')">N4 Experto</div>
+          </div>
+          <div class="level-content active" id="n1"></div>
+          <div class="level-content" id="n2"></div>
+          <div class="level-content" id="n3"></div>
+          <div class="level-content" id="n4"></div>
+          <div class="ai-bridge" id="aiBridge">
+            <div class="ai-bridge-title">⬡ CORDÓN 8 — PUENTE IA AVANZADO</div>
+            <div id="aiBridgeText"></div>
+            <div class="ai-chips" id="aiChips"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <div class="panel-section">
+        <div class="panel-title">Motor Cognitivo N1–N4 · Cordón 2</div>
+        <div class="level-display">
+          <div class="level-display-title">Niveles de explicación</div>
+          <div class="level-bars">
+            <div class="level-bar-row">
+              <div class="level-bar-label">N1</div>
+              <div class="level-bar-track"><div class="level-bar-fill" style="width:25%"></div></div>
+              <div class="level-bar-desc">Infantil</div>
+            </div>
+            <div class="level-bar-row">
+              <div class="level-bar-label">N2</div>
+              <div class="level-bar-track"><div class="level-bar-fill" style="width:50%"></div></div>
+              <div class="level-bar-desc">Básico</div>
+            </div>
+            <div class="level-bar-row">
+              <div class="level-bar-label">N3</div>
+              <div class="level-bar-track"><div class="level-bar-fill" style="width:75%"></div></div>
+              <div class="level-bar-desc">Técnico</div>
+            </div>
+            <div class="level-bar-row">
+              <div class="level-bar-label">N4</div>
+              <div class="level-bar-track"><div class="level-bar-fill" style="width:100%"></div></div>
+              <div class="level-bar-desc">Experto</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">Los 9 Cordones · Estado</div>
+        <div class="module-item">
+          <div class="module-left"><span class="module-icon">①</span> Intención</div>
+          <div class="module-badge">activo</div>
+        </div>
+        <div class="module-item">
+          <div class="module-left"><span class="module-icon">②</span> Cognitivo</div>
+          <div class="module-badge">activo</div>
+        </div>
+        <div class="module-item">
+          <div class="module-left"><span class="module-icon">③</span> Dominio</div>
+          <div class="module-badge">activo</div>
+        </div>
+        <div class="module-item">
+          <div class="module-left"><span class="module-icon">④</span> Herramientas</div>
+          <div class="module-badge">activo</div>
+        </div>
+        <div class="module-item">
+          <div class="module-left"><span class="module-icon">⑤</span> Transformación</div>
+          <div class="module-badge">activo</div>
+        </div>
+        <div class="module-item">
+          <div class="module-left"><span class="module-icon">⑥</span> Presentación</div>
+          <div class="module-badge">activo</div>
+        </div>
+        <div class="module-item">
+          <div class="module-left"><span class="module-icon">⑦</span> Expansión</div>
+          <div class="module-badge soon">próximo</div>
+        </div>
+        <div class="module-item">
+          <div class="module-left"><span class="module-icon">⑧</span> Interop. IA</div>
+          <div class="module-badge">activo</div>
+        </div>
+        <div class="module-item">
+          <div class="module-left"><span class="module-icon">⑨</span> Integración</div>
+          <div class="module-badge">activo</div>
+        </div>
+      </div>
+
+      <div class="panel-section">
+        <div class="panel-title">// Nexus‑9D · Autoría</div>
+        <div style="font-size:0.62rem; color: var(--text-dim); line-height: 2;">
+          ⟡ Sistema conceptual<br>
+          ◌ Autor: Asdrúbal<br>
+          ◌ Colaboración: IA<br>
+          ◌ Madrid — 2026<br>
+          ◌ Liberado para el mundo
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ORDEN DE CARGA: primero el núcleo, luego la interfaz -->
+<script src="core.js"></script>
+<script src="nexus9-logica.js"></script>
+</body>
+</html>
